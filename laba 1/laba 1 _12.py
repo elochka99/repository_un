@@ -33,8 +33,7 @@ while k:
             break
         elif K == "2":
             flag = False
-            print("пока")
-            print()
+            print("пока\n")
 
 
 

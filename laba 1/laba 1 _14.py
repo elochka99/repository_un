@@ -37,7 +37,7 @@ while k:
     if i < 1984:
         while i not in b:
             i += 12
-    elif i > 1996:
+    elif i > 1995:
         while i not in b:
             i -= 12
     if n in range(1984,1997):

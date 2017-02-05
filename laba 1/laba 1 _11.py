@@ -1,6 +1,6 @@
 # Gorokhova Olena Knit  16-A
-T = True
-while T:
+N = True
+while N:
     days = range(1, 32)
     mounths = range(1,13)
     years = range(1901, 2016)

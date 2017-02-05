@@ -40,15 +40,15 @@ while k:
     elif i > 1996:
         while i not in b:
             i -= 12
-    if n in range(1984,1996):
+    if n in range(1984,1997):
         n = "Green"
-    elif n in range(1996,2008):
+    elif n in range(1997,2009):
         n = "Red"
-    elif n in range(2008,2020):
+    elif n in range(2009,2021):
         n = "Yellow"
-    elif n in range(2020,2032):
+    elif n in range(2021,2033):
         n = "White"
-    elif n in range(2032,2044):
+    elif n in range(2033,2045):
         n = "Black"
     else:
         print("error")

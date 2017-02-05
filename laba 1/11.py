@@ -12,6 +12,6 @@ if d in days and m in mounths and y in years:
         y += 1
     else:
         d+=1
-    print('naxt date:', d , '.', m , '.', y)
+    print('next date:', d , '.', m , '.', y)
 else:
     print("error")

@@ -24,5 +24,4 @@ while N:
             break
         else:
             flag = False
-            print("пока")
-            print()
+            print("пока\n")

@@ -17,7 +17,7 @@ while N:
             d+=1
         print('next date:', d , '.', m , '.', y)
     else:
-        print("error")
+        print("введены не корректные данные")
     while True:
         K = input("хотите продолжить? 1 - да, 2 - нет :")
         if K == "1":

@@ -32,6 +32,7 @@ while k:
         Pig = 1995
     i = int(input("введите год:"))
     n = i
+    h = n
     b = range(1984, 1996)
     if i < 1984:
         while i not in b:
@@ -40,15 +41,15 @@ while k:
         while i not in b:
             i -= 12
     if n in range(1984,1996):
-        n = color(1)
+        n = "Green"
     elif n in range(1996,2008):
-        n = color(2)
+        n = "Red"
     elif n in range(2008,2020):
-        n = color(3)
+        n = "Yellow"
     elif n in range(2020,2032):
-        n = color(4)
+        n = "White"
     elif n in range(2032,2044):
-        n = color(5)
+        n = "Black"
     else:
         print("error")
-    print(i,'-',n, animal(i).name)
+    print(h,'-',n, animal(i).name)

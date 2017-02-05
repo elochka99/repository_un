@@ -1,4 +1,5 @@
-# Gorokhova Olena Knit  16-A
+# Gorokhova Olena KNIT 16-A
+#по дате d,m,y определить дату следующего дня
 N = True
 while N:
     days = range(1, 32)

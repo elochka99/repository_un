@@ -26,7 +26,7 @@ while k:
         else:
             print("введите правильные данные")
     except (ValueError, KeyError):
-        print('error')
+        print('wrote value or key')
     while True:
         K = input("хотите продолжить? 1 - да, 2 - нет :")
         if K == "1":

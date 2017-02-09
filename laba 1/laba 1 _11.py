@@ -9,10 +9,14 @@ while N:
     int(input('mounth: ')),\
     int(input('year: '))
     if d in days and m in mounths and y in years:
-        if d == 31 and m == 12:
-            d = 1
-            m = 1
-            y += 1
+        if d==31:
+            if m==12:
+                y+=1
+                d = 1
+                m = 1
+            else:
+                d = 1
+                m+=1
         else:
             d+=1
         print('next date:', d , '.', m , '.', y)

@@ -15,27 +15,24 @@ while k:
         America = 2
         Europe = 3
     try:
+        Asia = country.Bangladesho, country.Laos
+        America = country.Cuba
+        Europe = country.Germany, country.Monaco
         s = country[input('country: ')]
-        if s == country.Germany:
-            print(continent(3))
-        elif s == country.Cuba:
-            print(continent(2))
-        elif s == country.Laos:
-            print(continent(1))
-        elif s == country.Monaco:
-            print(continent(3))
-        elif s == country.Bangladesho:
-            print(continent(1))
-        elif s == country.Ukraine:
-            print(continent(3))
-        else:
-            print("введите корректные данные")
     except (ValueError, KeyError):
         print('wrote value or key')
+    for i in Asia:
+        if i == s:
+            print(continent.Asia.name)
+    for i in Europe:
+        if i == s:
+           print(continent.Europe.name)
+    if America == s:
+        print(continent.America.name)
     while True:
-        K = input("хотите продолжить? 1 - да, 2 - нет :")
-        if K == "1":
+        L = input("хотите продолжить? 1 - да, 2 - нет :")
+        if L == "1":
             break
-        elif K == "2":
+        elif L == "2":
             flag = False
             print("пока\n")

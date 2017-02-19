@@ -1,7 +1,7 @@
 k=True
 while k:
     v=set()
-    while len(v)<7:
+    while len(v)<30:
         try:
             v.add(int(input()))
             pass

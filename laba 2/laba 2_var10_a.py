@@ -1,9 +1,9 @@
 k=True
 while k:
     v=set()
-    while len(v)<7:
+    print("введите 30 чисел :")
+    while len(v)<30:
         try:
-            print("вам нужно ввести 30 чисел")
             v.add(int(input()))
             pass
         except ValueError:
@@ -13,6 +13,7 @@ while k:
     m=min(v)
     M=max(v)
     print ("минимальное число=",m,"максимальное число=",M)
+    print("числа которые не входят в последовательность:")
     for i in range(m,M):
         if i not in v:
             print(i,end=",")

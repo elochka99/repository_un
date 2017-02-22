@@ -7,8 +7,6 @@ while True:
     if re.search('[а-я]', inp):
         if re.search(',', inp):
             if inp.endswith('.'):
-                #inp = inp.split(', ')
-                #inp = set(inp)
                 print(inp)
             else:
                 print('нужна точка в конце')

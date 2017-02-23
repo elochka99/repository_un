@@ -6,12 +6,12 @@ import re
 
 letters = {'к', 'п', 'т', 'с', 'ф', 'х', 'ц', 'ч', 'ш'}
 while True:
-    inp = input("введите слова через запятую и в конце точка :")
-    inp = inp.lower()
-    if re.search('[а-я]', inp):
-        if re.search(',', inp):
-            if inp.endswith('.'):
-                print(inp)
+    p = input("введите слова через запятую и в конце точка :")
+    p = p.lower()
+    if re.search('[а-я]', p):
+        if re.search(',', p):
+            if p.endswith('.'):
+                print(p)
             else:
                 print('нужна точка в конце')
         else:
@@ -19,23 +19,23 @@ while True:
     else:
         print('нужно писать русские буквы')
 
-    temp = inp
+    temp = p
     c = 0
     res = set()
     for i in temp:
         if i == ',':
-            t = inp.index(',')
-            inp = inp[:t] + str(c) + inp[t+1:]
+            t = p.index(',')
+            p = p[:t] + str(c) + p[t+1:]
             c += 1
         if i == '.':
-            t = inp.index('.')
-            inp = inp[:t] + str(c) + inp[t+1:]
+            t = p.index('.')
+            p = p[:t] + str(c) + p[t+1:]
 
-    inp = set(inp.split(' '))
+    p = set(p.split(' '))
     for i in letters:
         flag1 = None
         flag2 = None
-        for j in inp:
+        for j in p:
             if int(j[-1]) % 2 == 0:
                 if i not in set(j):
                     flag1 = True

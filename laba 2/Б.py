@@ -1,33 +1,38 @@
 import re
-letters={'к','п','т','с','ф','х','ц','ч','ш'}
-
+letters = {'к', 'п', 'т', 'с', 'ф', 'х', 'ц', 'ч', 'ш'}
+letters1 = set()
 while True:
-    a = input("Введите последовательность слов из русских букв через запятую \n"
-              "без пробелов и с точкой в конце: ")
-    if a != "":
-        if a.__getitem__(-1) == ".":
-            a = a.replace(a.__getitem__(-1), "")
-            b = frozenset(a.split(","))
-            p=set()
-            for i in b:
-                if re.search("[а-яА-Я]", i):
-                    if i.isalpha():
-                        print(i.lower())
+    seq = input('Введите последовательность слов русского алфавита, разделяйте '
+    'запятой, в конце точка: ')
+    seq = seq.lower()
+    if re.search('[а-я]', seq):
+        if re.search(',', seq):
+            if seq.endswith('.'):
+                seq = seq.replace('.', '')
+                seq = seq.split(', ')
+                seq = set(seq)
+                seq1 = seq.copy()
+                n = 0
+                for i in seq1:
+                    n += 1
+                    if n % 2 == 0:
+                        seq.remove(i)
                     else:
-                        print("!Не должны присутствовать пробелы и небуквы")
-                        break
-                else:
-                    print("!Слова должны состоять из русских букв")
-                    break
+                        pass
+                for j in seq:
+                    for c in j:
+                        if c in letters:
+                            letters1.add(c)
+                let = sorted(letters1)
+                let1 = ' '.join(let)
+                print(let1)
 
-
+            else:
+                print('postav tochku')
         else:
-            print("!Отсутствует точка в конце")
+            print('postav komu')
     else:
-        print("!Последовательность должна быть непустая")
-    cont = input("Для продолжения введите yes, для завершения любое другое значение \n")
-    if cont == "yes":
-        print("")
-        continue
-    else:
+        print('ruskimi pishi')
+    ex = input('Для продолжения нажмите Enter...')
+    if ex != '':
         break

@@ -25,23 +25,14 @@ while z == 'да':
             for i in range(n):
                 print('a[', i, ']: ', end='')
                 a[i] = int(input())
-            k = int(input('Укажите на какое количество элементов нужно сдвинуть: '))
-            if k > n:
-                k = k % n
-            i = 0
-            t = a[i]
-            for j in range(n):
-                i -= k
-                if i < 0:
-                    i += n
-                t, a[i] = a[i], t
-            print('сдвинутая матрица: ', a)
+            M = int(input('Укажите на какое количество элементов нужно сдвинуть: '))
+            b = np.roll(a,-M)
+            print('сдвинутая матрица: ', b)
         elif h == 3:
-            n = int(input('введите размерность первой и второй квадратных матриц: '))
+            n = int(input('введите размерность квадратных матриц: '))
             m = n
-            a = np.ones((n, m), dtype=np.int_)
-            b = np.zeros((n, m), dtype=np.int_)
-            c = np.zeros((n, m), dtype=np.int_)
+            a = np.zeros((n, m), dtype=np.int)
+            b = np.zeros((n, m), dtype=np.int)
             for i in range(n):
                 for j in range(m):
                     print('a[', i, '][', j, ']: ', end='')
@@ -50,31 +41,17 @@ while z == 'да':
                 for j in range(m):
                     print('b[', i, '][', j, ']: ', end='')
                     b[i][j] = int(input())
-            for i in range(n):
-                for j in range(n):
-                    s = 0
-                    p = 0
-                    for k in range(n):
-                        c[i][j] += a[i][k] * b[k][j]
-            print('Произведение матриц: \n', c)
+            k = np.dot(a,b)
+            print('Произведение матриц: \n',k )
         elif h == 4:
-            n = int(input('Введите количеств єлементов массива: '))
+            n = int(input('Введите размерность квадратной матрицы: '))
             a = np.zeros((n, n), dtype=np.int)
             for i in range(n):
                 for j in range(n):
                     print('a[', i, '][', j, ']: ', end='')
                     a[i][j] = int(input())  # Заполняем массив
-            r = 0
-            op = 1
-            while r != n - 1:
-                gd = a[r, r]
-                op *= gd  # Сохраняем произведение главной диагонали
-                for i in range(r + 1, n):
-                    vit = a[i][r] / gd  # Находим значение которое нужно вычесть
-                    for j in range(n):
-                        a[i, j] -= vit * a[r][j]  # Вычитаем значение от строки
-                r += 1
-            print('Определитель матрицы = ', '%.0f' % (op * a[r][r]))
+            b = int(np.linalg.det(a))
+            print('Определитель матрицы = ',b)
         else:
             print("Выберите действие из предложенных")
     except:

@@ -19,4 +19,4 @@ if j == b:
 else:
     print('такой строки в тексте нет!')
 '''
-print('Час пошуку', timeit.timeit(stmt=stmt, setup=setup, number=1), 'секунд')
+print('Время поиска', timeit.timeit(stmt=stmt, setup=setup, number=1), 'секунд')

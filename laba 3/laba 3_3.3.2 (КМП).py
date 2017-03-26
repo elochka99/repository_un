@@ -1,7 +1,7 @@
 import timeit
 setup = '''
-text = input('Введіть рядок для пошуку: ')
-pattern = input('Введіть рядок який хочете знайти: ')
+text = input('Введите строку в которой будет поиск подстроки: ')
+pattern = input('Введите строку которую хотите найти: ')
 d = [0] * len(pattern)
 j = 0
 for i in range(1, len(pattern)):
@@ -22,4 +22,4 @@ for i in range(0, len(text)):
         print('Подстрока найдена в позиции: ', i-j+1)
         j = d[j-1]
     '''
-print('Час пошуку', timeit.timeit(stmt=stmt, setup=setup, number=1), 'секунд')
+print('Время поиска', timeit.timeit(stmt=stmt, setup=setup, number=1), 'секунд')

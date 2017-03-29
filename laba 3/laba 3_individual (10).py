@@ -51,12 +51,12 @@ while qq:
                         break
                     data = (input("Введите дату регистрации в формате (31.12.17): ").split("."))
                     datas.append(data)
-                    print("просмотр зарегестрированных авто: ")
-                    for j in range(c):
-                        print("марка ",  markas[j])
-                        print("фамилия ", names[j])
-                        print("номер ", nomers[j])
-                        print("дата ",  datas[j])
+                print("просмотр зарегестрированных авто: ")
+                for j in range(c):
+                    print("марка ",  markas[j])
+                    print("фамилия ", names[j])
+                    print("номер ", nomers[j])
+                    print("дата ",  datas[j])
             else:
                 break
         elif a == 2:

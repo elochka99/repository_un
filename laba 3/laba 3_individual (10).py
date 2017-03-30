@@ -1,6 +1,5 @@
 from enum import Enum
-qq = True
-while qq:
+while True:
     class Marka(Enum):
         BMW = 1
         Volkswagen = 2

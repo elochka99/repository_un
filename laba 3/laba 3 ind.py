@@ -1,6 +1,5 @@
 from enum import Enum
-qq = True
-while qq:
+while True:
     class Marka(Enum):
         BMW = 1
         Volkswagen = 2
@@ -60,7 +59,7 @@ while qq:
             else:
                 break
         elif a == 2:
-            imena = ["Александров","Шестакова","Мишина","Григорян","Шитов","Козлов","Воробьев"]
+            imena = ["Козлов","Шестакова","Мишина","Григорян","Шитов","Александров","Воробьев"]
             nom = ["1456","0954","1459","1235","9054","7895","2232"]
             mar = ["BMW", "Volkswagen", "Toyota", "Ford", "Ford", "BMW", "Nissan"]
             dat = ["12.12.12", "13.11.12", "24.12.11", "15.08.13", "27.03.11", "01.09.13", "22.04.12"]
@@ -75,14 +74,16 @@ while qq:
                 ma = Marka(m).name
                 if m in range(9):
                     if ma in mar:
-                        for i in range(len(mar)):
-                            if mar[i] == ma:
-                                h = []
-                                h.append((mar[i], imena[i], nom[i], dat[i]))
-                                print(h)
-                                #print(imena[i])
-                                #print(nom[i])
-                                #print(dat[i])
+                        def bubble_sort(mar):
+                            for i in range(len(mar)):
+                                for j in range(len(mar) - 1, i, -1):
+                                    if mar[j] < mar[j - 1]:
+                                        mar[j], mar[j - 1] = mar[j - 1], mar[j]
+
+                            return mar
+
+
+                        assert bubble_sort([4, 3, 2, 1]) == [1, 2, 3, 4]
                     else:
                         print("Владельцев автомобилей такой марки еще нет в базе!")
                 else:
@@ -106,10 +107,6 @@ while qq:
                     print("вы должны выбрать марку из списка")
 
 
+
     except (ValueError,IndexError):
         print("Введите коректные данные")
-    f = input('Хотите вернуться к началу программы (у) или выйти ? : ')
-    if f == 'y':
-        continue
-    else:
-        break

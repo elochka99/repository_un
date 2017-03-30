@@ -1,9 +1,9 @@
 import timeit
 setup = '''
-textpol = input('Введіть рядок для пошуку: ')
+textpol = input('Введите строку для поиска: ')
 textpol = textpol.split(' ')
-pattern = input('Введіть рядок який хочете знайти: ')
-k = int(input('Введіть точність вводу: '))
+pattern = input('Введите строку которую найти: ')
+k = int(input('Введите точность ввода: '))
 b = []
 index=[]
 slova = []
@@ -36,4 +36,4 @@ for t in range(kol+1):
             print(slova[i])
     index_slov += 1
 '''
-print('Час пошуку', timeit.timeit(stmt=stmt, setup=setup, number=1), 'секунд')
+print('Время поиска', timeit.timeit(stmt=stmt, setup=setup, number=1), 'секунд')

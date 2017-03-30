@@ -1,7 +1,7 @@
 import timeit
 setup = '''
-text = list(map(str, input('Введіть рядок для пошуку: ').split()))
-pattern = input('Введіть рядок який хочете знайти: ')
+text = list(map(str, input('Введите строку для поиска: ').split()))
+pattern = input('Введите строчку которую найти: ')
 text.sort()
 text = str(text)
 n = len(text)
@@ -26,4 +26,4 @@ if pos != -1:
 else:
     print('Элемент не найден.')
 '''
-print('Час пошуку', timeit.timeit(stmt=stmt, setup=setup, number=1), 'секунд')
+print('Время поиска', timeit.timeit(stmt=stmt, setup=setup, number=1), 'секунд')

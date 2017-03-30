@@ -1,3 +1,5 @@
+#Горохова Елена КНИТ 16-А
+#бинарный поиск
 import timeit
 setup = '''
 import numpy as np

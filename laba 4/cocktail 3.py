@@ -18,5 +18,5 @@ n = int(input('Количество элементов в массиве: '))
 A = np.zeros(n, dtype = np.int_)
 for j in range(n):
     A[j] = int(input('Вводите элменты массива: '))
-print("ваш массив: ", A)
+print("ваш массив:  ", A)
 print(cocktail_sort(A))

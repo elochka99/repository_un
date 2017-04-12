@@ -13,6 +13,7 @@ def bubble_sort(A):
                 A[j + 1] = tmp
                 flag = True
         i+=1
+    return A
 def selection_sort(A):
     N = len(A)
     for i in range(N - 1):
@@ -23,7 +24,8 @@ def selection_sort(A):
         tmp = A[i]
         A[i] = A[min]
         A[min] = tmp
-def insertion_sort(A)
+    return A
+def insertion_sort(A):
     N = len(A)
     for i in range(1,N):
         j = i - 1
@@ -32,7 +34,8 @@ def insertion_sort(A)
             A[j+1] = A[j]
             j -= 1
         A[j+1] = key
-def cocktail(a):
+    return A
+def cocktail_sort(a):
     for i in range(len(a)//2):
         for j in range(1+i, len(a)-i):
             if a[j] < a[j-1]:
@@ -76,16 +79,88 @@ def heap_sort(li):
         li[0] = temp
         down_Heap(li, 0, i)
     return li
-print('\nКак Вы хотите вводить информацию в БД: вручную или рандомно? [1/2]')
-    while True:
-        try:
-            ask_inp = int(input('Выберите цифру → '))
-            if ask_inp not in range(1, 3):
+print('Как Вы хотите вводить информацию в БД: вручную или рандомно? [1/2]')
+while True:
+    try:
+        ask_inp = int(input('Выберите цифру → '))
+        n = int(input("введите кол во элeментов в массиве: "))
+        A = np.zeros(n, dtype=int)
+        if ask_inp == 1:
+            for j in range(n):
+                A[j] = int(input("Заполните матрицу: "))
+        elif ask_inp == 2:
+            for j in range(n):
+                A[j] = random.randint(0, 100000)
+        else:
+            print('Пожалуйста, введите корректные данные ☻\n')
+            continue
+        print("ваша последовательность чисел: ", A)
+        break
+    except ValueError:
+        print('Пожалуйста, введите целое число ☻\n')
+        continue
+print('Каким методом сортировать? \n[1 - bubble / 2 - selection / 3 - insertion / 4 - cocktail / 5 - shell / 6 - heapsort ]')
+while True:
+    try:
+        ask = int(input('Выберите цифру → '))
+        if ask == 1:
+            order = input("1 - по возростанию \ 2 - в порядке убывания :")
+            if order == "1":
+                print("отсортированная последовательность bubble_sort по возрастанию: ", bubble_sort(A))
+            elif order == "2":
+                print("отсортированная последовательность bubble_sort по убыванию: ", bubble_sort(-A) * -1)
+            else:
                 print('Пожалуйста, введите корректные данные ☻\n')
                 continue
-            break
-
-        except ValueError:
-            print('Пожалуйста, введите целое число ☻\n')
+        elif ask == 2:
+            order = input("1 - по возростанию \ 2 - в порядке убывания :")
+            if order == "1":
+                print("отсортированная последовательность selection_sort по возрастанию: ", selection_sort(A))
+            elif order == "2":
+                print("отсортированная последовательность selection_sort по убыванию: ", selection_sort(-A) * -1)
+            else:
+                print('Пожалуйста, введите корректные данные ☻\n')
+                continue
+        elif ask == 3:
+            order = input("1 - по возростанию \ 2 - в порядке убывания :")
+            if order == "1":
+                print("отсортированная последовательность insertion_sort по возрастанию: ", insertion_sort(A))
+            elif order == "2":
+                print("отсортированная последовательность insertion_sort по убыванию: ", insertion_sort(-A) * -1)
+            else:
+                print('Пожалуйста, введите корректные данные ☻\n')
+                continue
+        elif ask == 4:
+            order = input("1 - по возростанию \ 2 - в порядке убывания :")
+            if order == "1":
+                print("отсортированная последовательность cocktail_sort по возрастанию: ", cocktail_sort(A))
+            elif order == "2":
+                print("отсортированная последовательность cocktail_sort по убыванию: ", cocktail_sort(-A) * -1)
+            else:
+                print('Пожалуйста, введите корректные данные ☻\n')
+                continue
+        elif ask == 5:
+            order = input("1 - по возростанию \ 2 - в порядке убывания :")
+            if order == "1":
+                print("отсортированная последовательность shell_sort по возрастанию: ", shell_sort(A))
+            elif order == "2":
+                print("отсортированная последовательность shell_sort по убыванию: ", shell_sort(-A) * -1)
+            else:
+                print('Пожалуйста, введите корректные данные ☻\n')
+                continue
+        elif ask == 6:
+            order = input("1 - по возростанию \ 2 - в порядке убывания :")
+            if order == "1":
+                print("отсортированная последовательность heap_sort по возрастанию: ", heap_sort(A))
+            elif order == "2":
+                print("отсортированная последовательность heap_sort по убыванию: ", heap_sort(-A) * -1)
+            else:
+                print('Пожалуйста, введите корректные данные ☻\n')
+                continue
+        else:
+            print('Пожалуйста, введите корректные данные ☻\n')
             continue
+    except ValueError:
+        print('Пожалуйста, введите целое число ☻\n')
+        continue
 

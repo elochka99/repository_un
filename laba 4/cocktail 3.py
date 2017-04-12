@@ -1,19 +1,17 @@
 import numpy as np
 def cocktail_sort(A):
     for k in range(len(A) - 1, 0, -1):
-        swapped = False
+
         for i in range(k, 0, -1):
             if A[i] < A[i - 1]:
                 A[i], A[i - 1] = A[i - 1], A[i]
-                swapped = True
+
 
         for i in range(k):
             if A[i] > A[i + 1]:
                 A[i], A[i + 1] = A[i + 1], A[i]
-                swapped = True
 
-        if not swapped:
-            return A
+        return A
 n = int(input('Количество элементов в массиве: '))
 A = np.zeros(n, dtype = np.int_)
 for j in range(n):

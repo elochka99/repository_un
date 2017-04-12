@@ -1,5 +1,5 @@
 import numpy as np
-def A(d):
+def shell_sort(d):
     n = len(d)
     while True:
         n = n//2
@@ -16,4 +16,4 @@ d = np.zeros(b , dtype = int)
 for j in range(b):
     d[j] = int(input("Вводите элементы массива:"))
 print("Ваш массив: ", d)
-print("Отсортированный массив", A(d))
+print("Отсортированный массив", shell_sort(d))

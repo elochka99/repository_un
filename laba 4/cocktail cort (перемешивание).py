@@ -4,6 +4,7 @@ def cocktail(a):
         for j in range(1+i, len(a)-i):
             if a[j] < a[j-1]:
                 a[j], a[j-1] = a[j-1], a[j]
+
         for j in range(len(a)-i-1, i, -1):
             if a[j] < a[j-1]:
                 a[j], a[j-1] = a[j-1], a[j]

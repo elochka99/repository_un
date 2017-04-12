@@ -1,24 +1,19 @@
 import numpy as np
-def shellsort(a):
-    def new_increment(a):
-        i = int(len(a) / 2)
-        yield i
-        while i != 1:
-            if i == 2:
-                i = 1
-            else:
-                i = int(np.round(i/2.2))
-            yield i
-    for increment in new_increment(a):
-        for i in range(increment, len(a)):
-            for j in range(i, increment-1, -increment):
-                if a[j - increment] < a[j]:
-                    break
-                a[j],a[j - increment] = a[j - increment],a[j]
-    return a
-n = int(input('Количество элементов в массиве: '))
-A = np.zeros(n, dtype = np.int_)
-for j in range(n):
-    A[j] = int(input('Вводите элменты массива: '))
-print("ваш массив: ", A)
-print(shellsort(A))
+def A(d):
+    n = len(d)
+    while True:
+        n = n//2
+        for i in range (n, len(d), n):
+            k = i
+            while k>0 and d[k] < d[k-n]:
+                d[k], d[k-n] = d[k-n], d[k]
+                k = k - n
+        if n ==  1:
+            break
+    return d
+b = int(input("введите количество элeментов в массиве: "))
+d = np.zeros(b , dtype = int)
+for j in range(b):
+    d[j] = int(input("Вводите элементы массива:"))
+print("Ваш массив: ", d)
+print("Отсортированный массив", A(d))

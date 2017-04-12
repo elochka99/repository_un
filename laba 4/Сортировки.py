@@ -1,4 +1,5 @@
 import numpy as np
+import random
 def bubble_sort(A):
     N = len(A)
     i = 0
@@ -41,5 +42,50 @@ def cocktail(a):
             if a[j] < a[j-1]:
                 a[j], a[j-1] = a[j-1], a[j]
         return a
+def shell_sort(d):
+    n = len(d)
+    while True:
+        n = n//2
+        for i in range (n, len(d), n):
+            k = i
+            while k>0 and d[k] < d[k-n]:
+                d[k], d[k-n] = d[k-n], d[k]
+                k = k - n
+        if n ==  1:
+            break
+    return d
+def heap_sort(li):
+    def down_Heap(li, k, n):
+        new_elem = li[k]
+        while 2*k+1 < n:
+            child = 2*k+1
+            if child+1 < n and li[child] < li[child+1]:
+                child += 1
+            if new_elem >= li[child]:
+                break
+            li[k] = li[child]
+            k = child
+        li[k] = new_elem
 
+    size = len(li)
+    for i in range(size//2-1,-1,-1):
+        down_Heap(li, i, size)
+    for i in range(size-1,0,-1):
+        temp = li[i]
+        li[i] = li[0]
+        li[0] = temp
+        down_Heap(li, 0, i)
+    return li
+print('\nКак Вы хотите вводить информацию в БД: вручную или рандомно? [1/2]')
+    while True:
+        try:
+            ask_inp = int(input('Выберите цифру → '))
+            if ask_inp not in range(1, 3):
+                print('Пожалуйста, введите корректные данные ☻\n')
+                continue
+            break
+
+        except ValueError:
+            print('Пожалуйста, введите целое число ☻\n')
+            continue
 

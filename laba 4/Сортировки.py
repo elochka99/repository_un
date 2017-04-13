@@ -35,16 +35,17 @@ def insertion_sort(A):
             j -= 1
         A[j+1] = key
     return A
-def cocktail_sort(a):
-    for i in range(len(a)//2):
-        for j in range(1+i, len(a)-i):
-            if a[j] < a[j-1]:
-                a[j], a[j-1] = a[j-1], a[j]
-
-        for j in range(len(a)-i-1, i, -1):
-            if a[j] < a[j-1]:
-                a[j], a[j-1] = a[j-1], a[j]
-        return a
+def cocktail_sort(A):
+    N = range(len(A) - 1)
+    while True:
+        for j in (N, reversed(N)):
+            flag = False
+            for i in j:
+                if A[i] > A[i + 1]:
+                    A[i], A[i + 1] = A[i + 1], A[i]
+                    flag = True
+            if not flag:
+                return A
 def shell_sort(d):
     n = len(d)
     while True:

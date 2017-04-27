@@ -3,8 +3,12 @@ import numpy as np
 import random
 import time
 
-start1 = time.time()
 def bubble_sort(A):
+    """
+
+    :param A:
+    :return:
+    """
     '''Сортировка пузырьком.
 
                В качестве аргумента нужно задать массив, который необходимо отсортировать.
@@ -21,20 +25,17 @@ def bubble_sort(A):
         flag = False
         for j in range(N-i-1):
             count1 += 1
-            if (A[j] > A[j+1]):
+            if A[j] > A[j+1]:
                 tmp = A[j]
                 A[j] = A[j+1]
                 A[j + 1] = tmp
                 count2 += 1
                 flag = True
-        i+=1
-    end1 = time.time()
+        i += 1
     print('Произведено сравнений:', count1)
     print('Произведено перестановок:', count2)
-    print('Время выполнения алгоритма: ', end1 - start1)
     return A
 
-start2 = time.time()
 def selection_sort(A):
     '''Сортировка выбором
 
@@ -57,13 +58,10 @@ def selection_sort(A):
         tmp = A[i]
         A[i] = A[min]
         A[min] = tmp
-    end2 = time.time()
     print('Произведено сравнений:', count1)
     print('Произведено перестановок:', count2)
-    print('Время выполнения алгоритма: ', end2 - start2)
     return A
 
-start3 = time.time()
 def insertion_sort(A):
     '''Сортировка вставками.
 
@@ -76,7 +74,7 @@ def insertion_sort(A):
     count1 = 0
     count2 = 0
     N = len(A)
-    for i in range(1,N):
+    for i in range(1, N):
         j = i - 1
         key = A[i]
         count1 += 1
@@ -85,13 +83,10 @@ def insertion_sort(A):
             count2 += 1
             j -= 1
         A[j+1] = key
-    end3 = time.time()
     print('Произведено сравнений:', count1)
     print('Произведено перестановок:', count2)
-    print('Время выполнения алгоритма: ', end3 - start3)
     return A
 
-start4 = time.time()
 def cocktail_sort(A):
     '''Сортировка перемешиванием.
 
@@ -113,14 +108,11 @@ def cocktail_sort(A):
                     count2 += 1
                     flag = True
             if not flag:
-                end4 = time.time()
                 print('Произведено сравнений:', count1)
                 print('Произведено перестановок:', count2)
-                print('Время выполнения алгоритма: ', end4 - start4)
                 return A
 
-start5 = time.time()
-def shell_sort(d):
+def shell_sort(A):
     '''Сортировка Шелла.
 
                    В качестве аргумента нужно задать массив, который необходимо отсортировать.
@@ -132,25 +124,22 @@ def shell_sort(d):
                    проходами.'''
     count1 = 0
     count2 = 0
-    n = len(d)
+    n = len(A)
     while True:
         n = n//2
-        for i in range (n, len(d), n):
+        for i in range (n, len(A), n):
             j = i
             count1 += 1
-            while j>0 and d[j] < d[j-n]:
-                d[j], d[j-n] = d[j-n], d[j]
+            while j>0 and A[j] < A[j-n]:
+                A[j], A[j-n] = A[j-n], A[j]
                 count2 += 1
                 j = j - n
         if n ==  1:
             break
-    end5 = time.time()
     print('Произведено сравнений:', count1)
     print('Произведено перестановок:', count2)
-    print('Время выполнения алгоритма: ', end5 - start5)
-    return d
+    return A
 
-start6 = time.time()
 def heap_sort(li):
     '''Пирамидальная сортировка
 
@@ -225,6 +214,7 @@ while True:
             ask = int(input('Выберите цифру → '))
             if ask == 1:
                 order = input("1 - по возростанию \ 2 - в порядке убывания :")
+                t = time.clock()
                 if order == "1":
                     print("Отсортированная последовательность bubble_sort по возрастанию: ", bubble_sort(A))
                 elif order == "2":
@@ -232,8 +222,10 @@ while True:
                 else:
                     print('Пожалуйста, введите корректные данные ☻\n')
                     continue
+                print(str(time.clock() - t))
             elif ask == 2:
                 order = input("1 - по возростанию \ 2 - в порядке убывания :")
+                t = time.clock()
                 if order == "1":
                     print("Отсортированная последовательность selection_sort по возрастанию: ", selection_sort(A))
                 elif order == "2":
@@ -241,7 +233,9 @@ while True:
                 else:
                     print('Пожалуйста, введите корректные данные ☻\n')
                     continue
+                print(str(time.clock() - t))
             elif ask == 3:
+                t = time.clock()
                 order = input("1 - по возростанию \ 2 - в порядке убывания :")
                 if order == "1":
                     print("Отсортированная последовательность insertion_sort по возрастанию: ", insertion_sort(A))
@@ -250,7 +244,9 @@ while True:
                 else:
                     print('Пожалуйста, введите корректные данные ☻\n')
                     continue
+                print(str(time.clock() - t))
             elif ask == 4:
+                t = time.clock()
                 order = input("1 - по возростанию \ 2 - в порядке убывания :")
                 if order == "1":
                     print("Отсортированная последовательность cocktail_sort по возрастанию: ", cocktail_sort(A))
@@ -259,7 +255,9 @@ while True:
                 else:
                     print('Пожалуйста, введите корректные данные ☻\n')
                     continue
+                print(str(time.clock() - t))
             elif ask == 5:
+                t = time.clock()
                 order = input("1 - по возростанию \ 2 - в порядке убывания :")
                 if order == "1":
                     print("Отсортированная последовательность shell_sort по возрастанию: ", shell_sort(A))
@@ -268,7 +266,9 @@ while True:
                 else:
                     print('Пожалуйста, введите корректные данные ☻\n')
                     continue
+                print(str(time.clock() - t))
             elif ask == 6:
+                t = time.clock()
                 order = input("1 - по возростанию \ 2 - в порядке убывания :")
                 if order == "1":
                     print("Отсортированная последовательность heap_sort по возрастанию: ", heap_sort(A))
@@ -277,9 +277,11 @@ while True:
                 else:
                     print('Пожалуйста, введите корректные данные ☻\n')
                     continue
+                print(str(time.clock() - t))
             else:
                 print('Пожалуйста, введите корректные данные ☻\n')
                 continue
+            #print(str(time.clock() - t))
             s = input('\nХотите сортировать еще раз другим алгоритмом? [1 - да]: ')
             if s == '1':
                 print()

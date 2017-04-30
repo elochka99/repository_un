@@ -1,5 +1,5 @@
 # Горохова Елена КНИТ 16-А
-
+print("123")
 import numpy as np
 import random
 import time

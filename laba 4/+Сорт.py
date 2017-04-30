@@ -1,4 +1,5 @@
 # Горохова Елена КНИТ 16-А
+
 import numpy as np
 import random
 import time

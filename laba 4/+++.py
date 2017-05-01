@@ -226,7 +226,6 @@ def heap_sort(li, r):
         down_Heap(li, 0, i)
     return li, count1, count2
 
-
 def sort(A):
     """
     Функция создана для проверки на эффективность всех алгоритмов сортировки с помощью

@@ -36,7 +36,7 @@ def bubble_sort(A, r):
                         flag = True
         else:
             break
-    return A,  "количество сравнений: {count1}" , count1, "\n количество перестановок:", count2
+    return A,  count1,  count2
 
 def selection_sort(A, r):
     """
@@ -163,7 +163,8 @@ def shell_sort(A, r):
                     count2 += 1
                     j -= n
 
-        n //= 2
+        if n ==  1:
+            break
     return A, count1, count2
 
 def heap_sort(li, r):
@@ -225,116 +226,289 @@ def heap_sort(li, r):
         down_Heap(li, 0, i)
     return li, count1, count2
 
-while True:
-    print('Как Вы хотите вводить информацию в БД: вручную или рандомно? [1/2]')
-    while True:
-        try:
-            ask_inp = int(input('Выберите цифру → '))
-            n = int(input("Введите кол во элeментов в массиве: "))
-            A = np.zeros(n, dtype=int)
-            if ask_inp == 1:
-                for j in range(n):
-                    A[j] = int(input("Заполните матрицу: "))
-            elif ask_inp == 2:
-                for j in range(n):
-                    A[j] = random.randint(0, 100000)
-            else:
-                print('Пожалуйста, введите корректные данные ☻\n')
-                continue
-            print("колчество элементов: ", n)
-            print("Ваша последовательность чисел: ", A )
-            break
-        except ValueError:
-            print('Пожалуйста, введите целое число ☻\n')
-            continue
-    print('Каким методом сортировать? \n[1 - bubble / 2 - selection / 3 - insertion / 4 - cocktail / 5 - shell / 6 - heapsort ]')
-    while True:
-        try:
-            ask = int(input('Выберите цифру → '))
-            if ask == 1:
-                order = input("1 - по возростанию \ 2 - в порядке убывания :")
-                t = time.clock()
-                if order == "1":
-                    res = bubble_sort(A, 1)
-                    print("Отсортированная последовательность bubble_sort по возрастанию: ", bubble_sort(A, 1))
-                elif order == "2":
-                    print("Отсортированная последовательность bubble_sort по убыванию: ", bubble_sort(A, 2))
-                else:
-                    print('Пожалуйста, введите корректные данные ☻\n')
-                    continue
-                #print("время работы: ", str(time.clock() - t))
-            elif ask == 2:
-                order = input("1 - по возростанию \ 2 - в порядке убывания :")
-                t = time.clock()
-                if order == "1":
-                    print("Отсортированная последовательность selection_sort по возрастанию: ", selection_sort(A, 1))
-                elif order == "2":
-                    print("Отсортированная последовательность selection_sort по убыванию: ", selection_sort(A, 2))
-                else:
-                    print('Пожалуйста, введите корректные данные ☻\n')
-                    continue
-                print("время работы: ", str(time.clock() - t))
-            elif ask == 3:
-                t = time.clock()
-                order = input("1 - по возростанию \ 2 - в порядке убывания :")
-                if order == "1":
-                    print("Отсортированная последовательность insertion_sort по возрастанию: ", insertion_sort(A, 1))
-                elif order == "2":
-                    print("Отсортированная последовательность insertion_sort по убыванию: ", insertion_sort(A, 2))
-                else:
-                    print('Пожалуйста, введите корректные данные ☻\n')
-                    continue
-                print("время работы: ", str(time.clock() - t))
-            elif ask == 4:
-                t = time.clock()
-                order = input("1 - по возростанию \ 2 - в порядке убывания :")
-                if order == "1":
-                    print("Отсортированная последовательность cocktail_sort по возрастанию: ", cocktail_sort(A, 1))
-                elif order == "2":
-                    print("Отсортированная последовательность cocktail_sort по убыванию: ", cocktail_sort(A, 2))
-                else:
-                    print('Пожалуйста, введите корректные данные ☻\n')
-                    continue
-                print("время работы: ", str(time.clock() - t))
-            elif ask == 5:
-                t = time.clock()
-                order = input("1 - по возростанию \ 2 - в порядке убывания :")
-                if order == "1":
-                    print("Отсортированная последовательность shell_sort по возрастанию: ", shell_sort(A, 1))
-                elif order == "2":
-                    print("Отсортированная последовательность shell_sort по убыванию: ", shell_sort(A, 2))
-                else:
-                    print('Пожалуйста, введите корректные данные ☻\n')
-                    continue
-                print("время работы: ", str(time.clock() - t))
-            elif ask == 6:
-                t = time.clock()
-                order = input("1 - по возростанию \ 2 - в порядке убывания :")
-                if order == "1":
-                    print("Отсортированная последовательность heap_sort по возрастанию: ", heap_sort(A, 1))
-                elif order == "2":
-                    print("Отсортированная последовательность heap_sort по убыванию: ", heap_sort(A, 2))
-                else:
-                    print('Пожалуйста, введите корректные данные ☻\n')
-                    continue
-                print("время работы: ", str( time.clock() - t))
-            else:
-                print('Пожалуйста, введите корректные данные ☻\n')
-                continue
-            #print(str(time.clock() - t))
-            s = input('\nХотите сортировать еще раз другим алгоритмом? [1 - да]: ')
-            if s == '1':
-                print()
-                continue
-            else:
-                break
-        except ValueError:
-            print('Пожалуйста, введите целое число ☻\n')
-            continue
 
-    r = input('\nХотите начать работу с программой заново? [1 - да]: ')
-    if r == '1':
+def sort(A):
+    """
+    Функция создана для проверки на эффективность всех алгоритмов сортировки с помощью
+     тестового массива в 100000 элементов.
+    :param A: массив
+    :return: эффективность алгоритмов
+    """
+    t = time.clock()
+    res = str(bubble_sort(A, 1)).split()
+    print("Отсортированная последовательность bubble_sort по возрастанию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(bubble_sort(A, 2)).split()
+    print("Отсортированная последовательность bubble_sort по убыванию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(selection_sort(A, 1)).split()
+    print("Отсортированная последовательность selection_sort по возрастанию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(selection_sort(A, 2)).split()
+    print("Отсортированная последовательность selection_sort по убыванию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(insertion_sort(A, 1)).split()
+    print("Отсортированная последовательность insertion_sort по возрастанию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(insertion_sort(A, 2)).split()
+    print("Отсортированная последовательность insertion_sort по убыванию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(cocktail_sort(A, 1)).split()
+    print("Отсортированная последовательность cocktail_sort по возрастанию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(cocktail_sort(A, 2)).split()
+    print("Отсортированная последовательность cocktail_sort по убыванию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(shell_sort(A, 1)).split()
+    print("Отсортированная последовательность shell_sort по возрастанию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(shell_sort(A, 2)).split()
+    print("Отсортированная последовательность shell_sort по убыванию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(heap_sort(A, 1)).split()
+    print("Отсортированная последовательность heap_sort по возрастанию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+    t = time.clock()
+    res = str(heap_sort(A, 2)).split()
+    print("Отсортированная последовательность heap_sort по убыванию: ", res[1:-2])
+    print('Произведено сравнений:', res[-2])
+    print('Произведено перестановок:', res[-1])
+    print("время работы: ", str(time.clock() - t))
+
+while True:
+    vop = input(print("Вы хотите отсортировать массив [1] или посмотреть "
+                      "эффективности алгоритмов на тестовм массиве [2]? - "))
+    while True:
+        if vop == "1":
+            while True:
+                try:
+                    n = int(input("Введите количество элeментов в массиве: "))
+                    if n <= 500000:
+                        A = np.zeros(n, dtype=int)
+                        print('Как Вы хотите вводить информацию в БД: вручную или рандомно? [1/2]')
+                        ask_inp = int(input('Выберите цифру → '))
+                        if ask_inp == 1:
+                            if n <= 30:
+                                for j in range(n):
+                                    A[j] = int(input("Заполните матрицу: "))
+                            else:
+                                print("Вы можете ввести вручную не больше 30 элементов!")
+                                continue
+                        elif ask_inp == 2:
+                            for j in range(n):
+                                A[j] = random.randint(0, 100000)
+                        else:
+                            print('Пожалуйста, введите корректные данные ☻\n')
+                            continue
+
+                        print("колчество элементов: ", n)
+                        print("Ваша последовательность чисел: ", A )
+                        break
+                    else:
+                        print("Для нормальной работы программы введите число менее 500 000")
+                        continue
+
+                except ValueError:
+                    print('Пожалуйста, введите целое число не более 9 символов ☻\n')
+                    continue
+            print('Каким методом сортировать? \n[1 - bubble / 2 - selection / 3 - insertion / 4 - cocktail / 5 - shell / 6 - heapsort ]')
+            while True:
+                try:
+                    ask = int(input('Выберите цифру → '))
+                    if ask == 1:
+                        order = input("1 - по возростанию \ 2 - в порядке убывания :")
+                        t = time.clock()
+                        if order == "1":
+                            res = str(bubble_sort(A, 1)).split( )
+                            print("Отсортированная последовательность bubble_sort по возрастанию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        elif order == "2":
+                            res = str(bubble_sort(A, 2)).split()
+                            print("Отсортированная последовательность bubble_sort по убыванию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        else:
+                            print('Пожалуйста, введите корректные данные ☻\n')
+                            continue
+                        print("время работы: ", str(time.clock() - t))
+                    elif ask == 2:
+                        order = input("1 - по возростанию \ 2 - в порядке убывания :")
+                        t = time.clock()
+                        if order == "1":
+                            res = str(selection_sort(A, 1)).split()
+                            print("Отсортированная последовательность selection_sort по возрастанию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        elif order == "2":
+                            res = str(selection_sort(A, 2)).split()
+                            print("Отсортированная последовательность selection_sort по убыванию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        else:
+                            print('Пожалуйста, введите корректные данные ☻\n')
+                            continue
+                        print("время работы: ", str(time.clock() - t))
+                    elif ask == 3:
+                        t = time.clock()
+                        order = input("1 - по возростанию \ 2 - в порядке убывания :")
+                        if order == "1":
+                            res = str(insertion_sort(A, 1)).split()
+                            print("Отсортированная последовательность insertion_sort по возрастанию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        elif order == "2":
+                            res = str(insertion_sort(A, 2)).split()
+                            print("Отсортированная последовательность insertion_sort по убыванию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        else:
+                            print('Пожалуйста, введите корректные данные ☻\n')
+                            continue
+                        print("время работы: ", str(time.clock() - t))
+                    elif ask == 4:
+                        t = time.clock()
+                        order = input("1 - по возростанию \ 2 - в порядке убывания :")
+                        if order == "1":
+                            res = str(cocktail_sort(A, 1)).split()
+                            print("Отсортированная последовательность cocktail_sort по возрастанию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        elif order == "2":
+                            res = str(cocktail_sort(A, 2)).split()
+                            print("Отсортированная последовательность cocktail_sort по убыванию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        else:
+                            print('Пожалуйста, введите корректные данные ☻\n')
+                            continue
+                        print("время работы: ", str(time.clock() - t))
+                    elif ask == 5:
+                        t = time.clock()
+                        order = input("1 - по возростанию \ 2 - в порядке убывания :")
+                        if order == "1":
+                            res = str(shell_sort(A, 1)).split()
+                            print("Отсортированная последовательность shell_sort по возрастанию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        elif order == "2":
+                            res = str(shell_sort(A, 2)).split()
+                            print("Отсортированная последовательность shell_sort по убыванию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        else:
+                            print('Пожалуйста, введите корректные данные ☻\n')
+                            continue
+                        print("время работы: ", str(time.clock() - t))
+                    elif ask == 6:
+                        t = time.clock()
+                        order = input("1 - по возростанию \ 2 - в порядке убывания :")
+                        if order == "1":
+                            res = str(heap_sort(A, 1)).split()
+                            print("Отсортированная последовательность heap_sort по возрастанию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        elif order == "2":
+                            res = str(heap_sort(A, 2)).split()
+                            print("Отсортированная последовательность heap_sort по убыванию: ", res[1:-2])
+                            print('Произведено сравнений:', res[-2])
+                            print('Произведено перестановок:', res[-1])
+                        else:
+                            print('Пожалуйста, введите корректные данные ☻\n')
+                            continue
+                        print("время работы: ", str( time.clock() - t))
+                    else:
+                        print('Пожалуйста, введите корректные данные ☻\n')
+                        continue
+                    s = input('\nХотите сортировать еще раз другим алгоритмом? [1 - да]: ')
+                    if s == '1':
+                        print()
+                        continue
+                    else:
+                        break
+                except ValueError:
+                    print('Пожалуйста, введите корректные данные (число) ☻\n')
+                    continue
+        elif vop == "2":
+            n = 1000
+            A = np.zeros(n, dtype=int)
+            for j in range(n):
+                A[j] = random.randint(0, 100000)
+            qwer = input(print("Вывести\n [1] - эффективность для сгенерированной псевдослучайной последовательности \n "
+                               "[2] - эффективность для отсортированной последовательности в порядке неубывания \n"
+                               "[3] - эффективность для отсортированной последовательности в порядке невозрастания\n"
+                               "Ваш ответ - "))
+            print("количество элементов в массиве: ", n)
+            if qwer == "1":
+                print("сгенерированный массив: \n", A)
+                print(sort(A))
+            elif qwer == "2":
+                B = sorted(A)
+                print("отсортированный массив в порядке неубывания: \n", B)
+                print(sort(B))
+            elif qwer == "3":
+                C = sorted(A, reverse = True)
+                print("отсортированный массив в порядке невозрастания: \n", C)
+                print(sort(C))
+            else:
+                print("введите коректные данные!")
+                continue
+        else:
+            print("введите коректные данные!")
+            continue
+        y = input('\nХотите поработать еще с этим? [1 - да]: ')
+        if y == '1':
+            print()
+            continue
+        else:
+            break
+    w = input('\nХотите начать работу с программой заново? [1 - да]: ')
+    if w == '1':
         print()
         continue
     else:
+        print("пока!")
         break

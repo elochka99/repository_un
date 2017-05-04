@@ -15,7 +15,11 @@ def text_iter(t, p):
             k = False
             break
     return k
-t = input("Введите знаки букавы: ")
-p = len(t)-1
-print(text(t, p))
-print(text_iter(t, p))
+while True:
+    try:
+        t = input("Введите знаки букавы: ")
+        p = len(t)-1
+        print(text(t, p))
+        print(text_iter(t, p))
+    except ValueError:
+        print("Введите коректные данные!")

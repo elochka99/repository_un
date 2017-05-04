@@ -38,21 +38,25 @@ def seach_rek(a,k):
 
 while True:
     n = 0
-    b = int(input("какая размерность матрицы? - "))
-    a = np.zeros((b, b), dtype=int)
-    for i in range(b):
-        for j in range(b):
-            a[i][j] = int(random() * 10)
-    print(a)
-    print("итерационно сумма = ", summa(a, n))
-    suma = sum(summa_rek(a))
-    print("рекурсивно сумма = ", suma)
-    print("итерационно произведение = ", proiz(a, n+1))
-    proi = proiz_rek(a)
-    p = 1
-    for i in proi:
-        p *= i
-    print("рекурсивно произведение = ", p)
-    k = int(input("введи число для поиска - "))
-    print("итерационно число на месте - ", seach(a,k))
-    print("рекурсивно число на месте - ", seach_rek(a, k))
+    try:
+        b = int(input("какая размерность матрицы? - "))
+        a = np.zeros((b, b), dtype=int)
+        for i in range(b):
+            for j in range(b):
+                a[i][j] = int(random() * 10)
+        print(a)
+        print("итерационно сумма = ", summa(a, n))
+        suma = sum(summa_rek(a))
+        print("рекурсивно сумма = ", suma)
+        print("итерационно произведение = ", proiz(a, n+1))
+        proi = proiz_rek(a)
+        p = 1
+        for i in proi:
+            p *= i
+        print("рекурсивно произведение = ", p)
+        k = int(input("введи число для поиска - "))
+        print("итерационно число на месте - ", seach(a,k))
+        print("рекурсивно число на месте - ", seach_rek(a, k))
+    except ValueError:
+        print("Введите корректные данные!")
+        continue

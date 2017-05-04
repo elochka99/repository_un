@@ -33,7 +33,8 @@ while z == 1:
             kol = rec(n,m)
             kol1 = iter(n, m)
             print('Количество представлений заданного числа: ',"рекурсивно - ",kol, "итерационно - ", kol1)
-        print('Для продолжения нажмите - 1\nДля завершения любую другую кнопку')
-        z = int(input())
-    except ValueError:
+
+    except (ValueError, RecursionError, MemoryError):
         print("Введите коректные данные!")
+    print('Для продолжения нажмите - 1\nДля завершения любую другую кнопку')
+    z = input()

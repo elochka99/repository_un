@@ -23,8 +23,7 @@ def iter(n, m):
             a.append((b, c - 1))
             a.append((b - c, c))
     return s
-z = 1
-while z == 1:
+while True:
     try:
         n = m = int(input('N = '))
         if n <= 0 or m <= 0:
@@ -33,8 +32,12 @@ while z == 1:
             kol = rec(n,m)
             kol1 = iter(n, m)
             print('Количество представлений заданного числа: ',"рекурсивно - ",kol, "итерационно - ", kol1)
-
+        w = input('\nХотите начать работу с программой заново? [1 - да]: ')
+        if w == '1':
+            print()
+            continue
+        else:
+            print("пока!")
+            break
     except (ValueError, RecursionError, MemoryError):
         print("Введите коректные данные!")
-    print('Для продолжения нажмите - 1\nДля завершения любую другую кнопку')
-    z = input()

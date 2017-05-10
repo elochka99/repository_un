@@ -20,6 +20,6 @@ while True:
         t = input("Введите формулу: ")
         p = len(t)-1
         print("рекурсивно = ", text(t, p))
-        print("Итерационно", text_iter(t, p))
+        print("Итерационно = ", text_iter(t, p))
     except ValueError:
         print("Введите коректные данные!")

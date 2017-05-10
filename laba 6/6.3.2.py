@@ -40,5 +40,5 @@ while True:
             print("пока!")
             break
     except (ValueError, IndexError):
-        print("введите корректные данные!")
+        print("введите корректные данные! ")
 

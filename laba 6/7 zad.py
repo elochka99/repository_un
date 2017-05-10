@@ -25,11 +25,11 @@ while flag:
                         print('Вы допустили ошибку!')
                         flag = False
                     else:
-                        with open('MyAnket.txt', 'w') as g:
+                        with open('Anket.txt', 'w') as g:
                             g.write('Имя: ' + name + '\n')
                             g.write('Возраст: ' + year + '\n')
                             g.write('Электроннный адрес: ' + email + '\n')
-                        with open('MyAnket.txt', 'r') as f:
+                        with open('Anket.txt', 'r') as f:
                             line = f.readlines()
                         for i in line:
                             print(i, sep='')

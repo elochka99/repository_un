@@ -25,4 +25,4 @@ while True:
             print("пока!")
             break
     except (ValueError, IndexError, MemoryError):
-        print("введите корректные данные!")
+        print("введите корректные данные! ")

@@ -42,7 +42,7 @@ def text_iter(t, p):
 while True:
     try:
 
-        t = input("Введите формулу: ")
+        t = input("Введите формулу:  ")
         p = len(t) - 1
         if len(t) == 1 and t[0] not in r:
             raise ValueError()

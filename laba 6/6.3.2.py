@@ -1,3 +1,4 @@
+# Горохова Елена КНИТ 16-А
 import numpy as np
 def Dijkstra(N, S, matrix):
     valid = [True]*N

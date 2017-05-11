@@ -1,3 +1,5 @@
+# Горохова Елена КНИТ 16-А
+
 import random
 while True:
     try:

@@ -1,4 +1,12 @@
+# Горохова Елена КНИТ 16-А
+# Даны натуральные числа n,m найти наибольший общий делитель Nod(n,m)
 def iter(n, m):
+    '''
+    
+    :param n: значение числа
+    :param m: значение числа
+    :return: НОД
+    '''
     while n != m:
         if n > m:
             n = n - m
@@ -6,6 +14,12 @@ def iter(n, m):
             m = m - n
     return n
 def recurs(n, m):
+    '''
+    
+    :param n: значение числа
+    :param m: значение числа
+    :return: НОД
+    '''
     if n < m:
         n, m = m, n
     if 0 < m:

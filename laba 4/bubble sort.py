@@ -18,3 +18,16 @@ while flag:
     i+=1
     print(A)
 
+import numpy as np
+b = int(input("введите кол во элиментов в массиве"))
+a = np.zeros(b , dtype = int)
+for i in range(b):
+    a[i] = int(input("Заполните матрицу"))
+print (a)
+m=len(a)-1
+while m>0:
+    for i in range(m):
+      if (a[i]>a[i+1]):
+       a[i], a[i-1] = a[i-1], a[i]
+    m -= 1
+    print(a)

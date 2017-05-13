@@ -3,9 +3,9 @@
 import timeit
 setup = '''
 import numpy as np
-#import random as rnd
+
 n = int(input('Количество элементов в массиве: '))
-a = np.zeros(n, dtype = np.int_)
+a = np.zeros(n, dtype = np.int)
 for j in range(n):
     a[j] = int(input('Вводите элменти массива: '))
 x = float(input('искомый элемент x:  '))
